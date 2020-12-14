@@ -1,0 +1,33 @@
+.bmi-bg{
+    /* background-image: url('../assets/img/BmiBackGround.jpg'); */
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+}
+
+
+
+.cole {
+    border: solid 2px rgb(255, 255, 255);
+    margin: 100;
+    text-align: center;
+    
+}
+
+.tableHead{
+    color: white;
+}
+
+.align-left{
+    text-align: left;
+    margin-right: auto;
+}
+
+.dranger{
+    color: red;
+}
+.oke{
+    color:green;
+}

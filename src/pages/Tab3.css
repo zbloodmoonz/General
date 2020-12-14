@@ -1,0 +1,18 @@
+.bg{background-color:#333333;
+    background-image: url('../assets/img/garuda.png');
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 84vh;
+    text-align: center;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.bg2{
+    background-color: rgba(161, 159, 159, 0.514);
+    height:600px;
+    width:600px;
+    
+}

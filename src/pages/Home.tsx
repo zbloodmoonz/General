@@ -5,6 +5,7 @@ import './Home.css';
 
 const Home: React.FC = () => {
   return (
+    <body>
     <IonPage>
       <IonHeader>
         <IonToolbar>
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
         
       </IonContent>
     </IonPage>
+    </body>
   );
 };
 

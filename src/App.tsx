@@ -10,14 +10,25 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
+
 import BmiTab from './pages/BmiTab';
-import Tab2 from './pages/Tab2';
+import CurrenC from './pages/CurrencyC';
 import Tab3 from './pages/Tab3';
-import LoginPage from './pages/LoginPage';
+import Home from './pages/Home';
+
 
 /* Theme variables */
 import './theme/variables.css';
+
+// ICONS
+
+import   Tab1Icon from './assets/ico/Tab1Icon.svg';
+import  Tab2Icon from './assets/ico/Tab2Icon.svg';
+
+
+
+
+
 
 const App: React.FC = () => (
   <IonApp>
@@ -25,25 +36,22 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/CalculateBMI" component={BmiTab} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
+          <Route path="/ConvertCurrency" component={CurrenC} exact={true} />
           <Route path="/tab3" component={Tab3} />
-          <Route path="/login" >
-            <LoginPage />
-          </Route>
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+  
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="BmiTab" href="/CalculateBMI">
-            <IonIcon icon={triangle} />
+            <IonIcon icon={Tab1Icon} />
             <IonLabel>BMI</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+          <IonTabButton tab="CurrC" href="/ConvertCurrency">
+            <IonIcon icon={Tab1Icon} />
+            <IonLabel>CurrenC</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonIcon icon={Tab2Icon} size="50px"/>
+            <IonLabel>Info.</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

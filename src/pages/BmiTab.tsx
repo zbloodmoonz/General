@@ -19,6 +19,8 @@ import "./bmi.css";
 import InputCtrl from '../components/InputCtrl';
 import BmiControls from "../components/BmiControls";
 import BmiResult from "../components/BmiResult";
+import { IonCardContent } from '@ionic/react';
+
 
 const BmiTab: React.FC = () => {
   const [caledBMI, setcaledBMI] = useState<number>();
@@ -85,42 +87,40 @@ setError("Plase input Invalid, please input a number that is > 0");
     buttons={[{ text: 'Okay', handler: clearError}]}
     />
 
-    <IonPage >
+    <IonPage  >
+      <IonContent  >
       <IonHeader>
-        <IonToolbar color="grey">
-          <IonTitle>BMI Calculator</IonTitle>
+        <IonToolbar color="black" >
+          <IonTitle>Be Aim I Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent  >
-      <IonGrid>
-
+      <div className="card-nobg"  >
       <IonRow>
       <IonCol>
         <InputCtrl sValue={calcUnits} onSelectValue={selectUnitHandler} />
       </IonCol>
       </IonRow>
-
-        <IonItem>
+     
+        <IonItem >
           <IonLabel position="floating">Your Height ({calcUnits === 'mtrx' ? 'meters':'feet'}) </IonLabel>
-          <IonInput ref={hRef} type="number"></IonInput>
+          <IonInput  ref={hRef} type="number"></IonInput>
         </IonItem>
-        <IonItem>
+        <IonItem >
           <IonLabel position="floating">Your Weight ({calcUnits === 'mtrx' ? 'Kg':'lbs'})</IonLabel>
-          <IonInput ref={wRef} type="number"></IonInput>
+          <IonInput  ref={wRef} type="number"></IonInput>
         </IonItem>
-
         
           <BmiControls OnCalc={calculateBMI} OnReset={resetInputs} />
           {caledBMI && 
           <BmiResult result={caledBMI} />
           }
-        </IonGrid>
+         
 
-        <IonCard class="cole ">
+        {/* <IonContent >
+          <div className="cole ">
           <IonRow >
             <IonCol className="align-left tableHead " >
-          
-          <h1>Category</h1>
+          <h1 className="tableHead ">Category</h1>
           <br /> <h3 >Severe Thinness</h3>
           <br /> <h3 >Moderate Thinness</h3>
           <br /> <h3 >Mild Thinness</h3>
@@ -129,10 +129,7 @@ setError("Plase input Invalid, please input a number that is > 0");
           <br /> <h3 >Obese Class I</h3>
           <br /> <h3 >Obese Class II</h3>
           <br /> <h3 >Obese Class III</h3>
-          
         </IonCol>
-          
-
         <IonCol ><h1 className="tableHead ">BMI-Range</h1>
           <br /> <h3 className="dranger ">Less than 16</h3>
           <br /> <h3 className="dranger ">16 - 17</h3>
@@ -144,10 +141,10 @@ setError("Plase input Invalid, please input a number that is > 0");
           <br /> <h3 className="dranger ">More than 40</h3>
         </IonCol>
         </IonRow>
-      </IonCard>
-      <IonCard class="bmi-bg"></IonCard>
+        </div>
+      </IonContent> */}
+      </div>
       </IonContent>
-      
     </IonPage>
     </React.Fragment>
   );

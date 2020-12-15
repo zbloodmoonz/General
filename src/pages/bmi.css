@@ -1,8 +1,3 @@
-
-
-
-
-
 .pagess{
     background-image: url('../assets/img/BMI.png');
     
@@ -20,13 +15,6 @@
     
     
 }
-
-.card-cont{
-    background-color: rgba(0, 0, 0, 0.808);
-    
-}
-
-
 .cole {
     background-color: #333333;
     border: solid 2px rgb(255, 255, 255);
@@ -35,9 +23,6 @@
     
 }
 
-.tableHead{
-    color: white;
-}
 
 .align-left{
     text-align: left;

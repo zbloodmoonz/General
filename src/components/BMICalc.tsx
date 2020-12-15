@@ -1,6 +1,6 @@
 import { IonApp, IonHeader, IonToolbar, IonTitle, IonItem, IonLabel, IonInput, IonRow, IonCol, IonGrid, IonContent, IonButton } from '@ionic/react';
 import React from 'react';
-import './ExploreContainer.css';
+
 
 
 

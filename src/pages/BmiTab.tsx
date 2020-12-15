@@ -6,61 +6,48 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonGrid,
   IonContent,
   IonAlert,
   IonCol,
   IonRow,
-  IonCard,
   IonPage,
-  
 } from "@ionic/react";
 import "./bmi.css";
-import InputCtrl from '../components/InputCtrl';
+import InputCtrl from "../components/InputCtrl";
 import BmiControls from "../components/BmiControls";
 import BmiResult from "../components/BmiResult";
-import { IonCardContent } from '@ionic/react';
-
 
 const BmiTab: React.FC = () => {
   const [caledBMI, setcaledBMI] = useState<number>();
-  const [error, setError]= useState<string>();
-  const [calcUnits, setCalcUnits]= useState<'mtrx'|'impr' > ('mtrx');
-  
+  const [error, setError] = useState<string>();
+  const [calcUnits, setCalcUnits] = useState<"mtrx" | "impr">("mtrx");
 
   const hRef = useRef<HTMLIonInputElement>(null);
   const wRef = useRef<HTMLIonInputElement>(null);
-  
 
   const calculateBMI = () => {
     const inputHeight = hRef.current!.value;
     const inputWeight = wRef.current!.value;
 
     if (
-      !inputWeight || 
-      !inputHeight || 
+      !inputWeight ||
+      !inputHeight ||
       +inputWeight <= 0 ||
       +inputHeight <= 0
-      ){
-setError("Plase input Invalid, please input a number that is > 0");
+    ) {
+      setError("Plase input Invalid, please input a number that is > 0");
       return;
     }
 
-     // Conversion Factor || feet and lbs : Default: meters and Kg
-     const heightConversionFactor= calcUnits==='impr'? 3.28:1;
-     const height= +inputHeight / heightConversionFactor;
-    const weightConversionFactor= calcUnits==='impr'? 2.2:1;
-    const weight= +inputWeight / weightConversionFactor;
-    
-
-    
-
+    // Conversion Factor || feet and lbs : Default: meters and Kg
+    const heightConversionFactor = calcUnits === "impr" ? 3.28 : 1;
+    const height = +inputHeight / heightConversionFactor;
+    const weightConversionFactor = calcUnits === "impr" ? 2.2 : 1;
+    const weight = +inputWeight / weightConversionFactor;
 
     //Calculates
     const bmi = weight / (height * height);
-    console.log(bmi)
-
-   
+    console.log(bmi);
 
     setcaledBMI(bmi);
   };
@@ -70,53 +57,57 @@ setError("Plase input Invalid, please input a number that is > 0");
     wRef.current!.value = " ";
     setcaledBMI(0);
   };
-  
 
-  const clearError = ()=>{
+  const clearError = () => {
     setError("");
-  }
+  };
 
-  const selectUnitHandler=(sValue:'mtrx' | 'impr') => {
+  const selectUnitHandler = (sValue: "mtrx" | "impr") => {
     setCalcUnits(sValue);
   };
 
   return (
-
     <React.Fragment>
-    <IonAlert isOpen={!!error} message={error} 
-    buttons={[{ text: 'Okay', handler: clearError}]}
-    />
+      <IonAlert
+        isOpen={!!error}
+        message={error}
+        buttons={[{ text: "Okay", handler: clearError }]}
+      />
 
-    <IonPage  >
-      <IonContent  >
-      <IonHeader>
-        <IonToolbar color="black" >
-          <IonTitle>Be Aim I Calculator</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <div className="card-nobg"  >
-      <IonRow>
-      <IonCol>
-        <InputCtrl sValue={calcUnits} onSelectValue={selectUnitHandler} />
-      </IonCol>
-      </IonRow>
-     
-        <IonItem >
-          <IonLabel position="floating">Your Height ({calcUnits === 'mtrx' ? 'meters':'feet'}) </IonLabel>
-          <IonInput  ref={hRef} type="number"></IonInput>
-        </IonItem>
-        <IonItem >
-          <IonLabel position="floating">Your Weight ({calcUnits === 'mtrx' ? 'Kg':'lbs'})</IonLabel>
-          <IonInput  ref={wRef} type="number"></IonInput>
-        </IonItem>
-        
-          <BmiControls OnCalc={calculateBMI} OnReset={resetInputs} />
-          {caledBMI && 
-          <BmiResult result={caledBMI} />
-          }
-         
+      <IonPage>
+        <IonContent>
+          <IonHeader>
+            <IonToolbar color="black">
+              <IonTitle>Be Aim I Calculator</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <div className="card-nobg">
+            <IonRow>
+              <IonCol>
+                <InputCtrl
+                  sValue={calcUnits}
+                  onSelectValue={selectUnitHandler}
+                />
+              </IonCol>
+            </IonRow>
 
-        {/* <IonContent >
+            <IonItem>
+              <IonLabel position="floating">
+                Your Height ({calcUnits === "mtrx" ? "meters" : "feet"}){" "}
+              </IonLabel>
+              <IonInput ref={hRef} type="number"></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel position="floating">
+                Your Weight ({calcUnits === "mtrx" ? "Kg" : "lbs"})
+              </IonLabel>
+              <IonInput ref={wRef} type="number"></IonInput>
+            </IonItem>
+
+            <BmiControls OnCalc={calculateBMI} OnReset={resetInputs} />
+            {caledBMI && <BmiResult result={caledBMI} />}
+
+            {/* <IonContent >
           <div className="cole ">
           <IonRow >
             <IonCol className="align-left tableHead " >
@@ -143,9 +134,9 @@ setError("Plase input Invalid, please input a number that is > 0");
         </IonRow>
         </div>
       </IonContent> */}
-      </div>
-      </IonContent>
-    </IonPage>
+          </div>
+        </IonContent>
+      </IonPage>
     </React.Fragment>
   );
 };

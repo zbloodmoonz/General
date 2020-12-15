@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -14,7 +14,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import BmiTab from './pages/BmiTab';
 import CurrenC from './pages/CurrencyC';
 import Tab3 from './pages/Tab3';
-import Home from './pages/Home';
+
 
 
 /* Theme variables */
